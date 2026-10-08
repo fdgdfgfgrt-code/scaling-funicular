@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Motion Dither — анимированный дизеринг изображений</title>
+  <meta name="description" content="Интерактивный WebGL-эффект motion dither с настройкой алгоритма, палитры, движения и экспортом PNG / видео.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 4 4%27%3E%3Cpath fill=%27%23ff6b3d%27 d=%27M0 0h1v1H0zM2 0h1v1H2zM1 1h1v1H1zM3 1h1v1H3zM0 2h1v1H0zM2 2h1v1H2zM1 3h1v1H1zM3 3h1v1H3z%27/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <main class="stage" id="stage">
+      <canvas id="canvas" aria-label="Изображение с эффектом дизеринга"></canvas>
+      <div class="drop-hint" id="dropHint">Отпустите файл, чтобы загрузить изображение</div>
+      <div class="stage-info" id="stageInfo"></div>
+    </main>
+
+    <aside class="panel" id="panel">
+      <header class="panel-head">
+        <h1>Motion&nbsp;Dither</h1>
+        <p>Перетащите изображение, вставьте из буфера (Ctrl+V) или загрузите файл. Наведите курсор на картинку.</p>
+      </header>
+
+      <div class="actions">
+        <button type="button" id="btnUpload" class="btn btn-primary">Загрузить изображение</button>
+        <button type="button" id="btnPhoto" class="btn">Случайное фото</button>
+        <button type="button" id="btnDemo" class="btn">Демо-сцена</button>
+        <button type="button" id="btnPlay" class="btn">Пауза</button>
+        <button type="button" id="btnPng" class="btn">Сохранить PNG</button>
+        <button type="button" id="btnRec" class="btn">● Запись видео</button>
+        <button type="button" id="btnRandom" class="btn">Случайно</button>
+        <button type="button" id="btnShare" class="btn">Ссылка</button>
+        <button type="button" id="btnReset" class="btn btn-ghost">Сброс</button>
+      </div>
+
+      <section class="presets">
+        <h2>Пресеты</h2>
+        <div class="chips" id="presets"></div>
+      </section>
+
+      <div id="controls"></div>
+
+      <footer class="panel-foot">
+        <b>Клавиши:</b> Пробел — пауза, S — PNG, R — случайно, H — скрыть панель
+      </footer>
+    </aside>
+
+    <button type="button" class="panel-toggle" id="panelToggle" aria-controls="panel">Скрыть настройки</button>
+  </div>
+
+  <input type="file" id="file" accept="image/*" hidden>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
